@@ -17,6 +17,4 @@ function App() {
   );
 }
 
-// Additionally, make sure that your interface has a Save To Spotify button and a Search button.
-
 export default App;
