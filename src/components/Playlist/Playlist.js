@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Playlist.module.css'
 
 function Playlist({ tracks, removeTrackFromPlaylist }) {
+    const [playlistTitle, setPlaylistTitle] = useState('');
+
+    const handleChange = (event) => {
+        setPlaylistTitle(event.target.value);
+    }
+
     return (
       <div>
-        <input type='text' placeholder='Playlist name' />
+        <label htmlFor="playlistTitleInput">Playlist title: </label>
+        <input 
+            id="playlistTitleInput"
+            type='text' 
+            value={playlistTitle}
+            onChange={handleChange}
+        />
         {tracks.map(track => (
           <div key={track.id}>
             <p>{track.songName}</p>
