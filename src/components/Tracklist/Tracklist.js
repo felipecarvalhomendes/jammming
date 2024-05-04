@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './Tracklist.module.css'
-import Track from '../Track/Track'
+import SearchResults from '../SearchResults/SearchResults';
 
-function Tracklist() {
-    return (
+function Tracklist(props) {
+    const tracksAddedToPlaylist = [props];
+
+    {tracksAddedToPlaylist.map(track => {
+        return (
         <div>
-            <Track />
-            <Track />
-            <Track />
+            <p>{track.songName}</p>
+            <p>{track.artist}</p>
+            <p>{track.album}</p>
         </div>
-    );
+        );
+    })}
 }
 
 export default Tracklist;
