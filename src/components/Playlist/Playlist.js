@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Playlist.module.css'
 
-function Playlist({ tracks, removeTrackFromPlaylist, resetPlaylist }) {
+function Playlist({ tracks, removeTrackFromPlaylist, savePlaylist }) {
     const [playlistTitle, setPlaylistTitle] = useState('');
 
     const handleChange = (event) => {
@@ -25,7 +25,7 @@ function Playlist({ tracks, removeTrackFromPlaylist, resetPlaylist }) {
             <button onClick={() => removeTrackFromPlaylist(track)}>Remove from playlist</button>
           </div>
         ))}
-        <button onClick={() => resetPlaylist()}>Save to Spotify</button>
+        <button onClick={() => savePlaylist}>Save to Spotify</button>
       </div>
     );
   }

@@ -12,11 +12,7 @@ function App() {
     Spotify.search(term).then(setSearchResults);
   }
 
-  const [tracks, setTracks] = useState([
-    { songName: 'Beautiful Day', artist: 'U2', album: 'No idea', id: 12345 },
-    { songName: 'Fio de cabelo', artist: 'Chitãozinho e Chororó', album: 'No idea', id: 290487 },
-    { songName: 'Teto de vidro', artist: 'Pitty', album: 'Teto de vidro', id: 98765 }
-  ]);
+  const [tracks, setTracks] = useState([]);
 
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -30,8 +26,9 @@ function App() {
     setPlaylistTracks(playlistTracks.filter(track => track.id !== trackToRemove.id));
   } 
   
-  const resetPlaylist = () => {
-    setPlaylistTracks([]);
+  const savePlaylist = () => {
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(tracks.name, trackUris).then(setPlaylistTracks([]));
   }
 
   return (
@@ -42,7 +39,7 @@ function App() {
       <Playlist 
         tracks={playlistTracks} 
         removeTrackFromPlaylist={removeTrackFromPlaylist}
-        resetPlaylist={resetPlaylist} 
+        savePlaylist={savePlaylist} 
       />
     </div>
   );
