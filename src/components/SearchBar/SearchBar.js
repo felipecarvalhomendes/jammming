@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './SearchBar.module.css';
 
-function SearchBar() {
+function SearchBar(props) {
     const [search, setSearch] = useState('');
 
     const handleChange = (event) => {
@@ -9,8 +9,8 @@ function SearchBar() {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault;
-        return {search};
+        event.preventDefault();
+        props.search(search);
     }
 
     return (

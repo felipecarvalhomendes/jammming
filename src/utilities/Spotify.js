@@ -1,5 +1,5 @@
-const client_id ='877d0200b7be450cadf26de2389e4cc4';
-const redirect_uri = 'http://localhost:3000/';
+const clientId ='877d0200b7be450cadf26de2389e4cc4';
+const redirectUri = 'http://localhost:3000/';
 let accessToken;
 
 const Spotify = {
@@ -25,7 +25,7 @@ const Spotify = {
 
     },
 
-    search() {
+    search(term) {
         const accessToken = Spotify.getAccessToken();
 
         return fetch(`https://api.spotify.com/v1/search?q=${term}`, {
