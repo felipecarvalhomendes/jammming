@@ -9,7 +9,9 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   const search = (term) => {
-    Spotify.search(term).then(setSearchResults);
+    Spotify.search(term).then(response => response.json
+    ).then(jsonResponse => setSearchResults(jsonResponse));
+    console.log(searchResults);
   }
 
   const [tracks, setTracks] = useState([]);
