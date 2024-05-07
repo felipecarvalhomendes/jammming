@@ -3,8 +3,15 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../utilities/Spotify';
 
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
+
+  const search = (term) => {
+    Spotify.search(term).then(setSearchResults);
+  }
+
   const [tracks, setTracks] = useState([
     { songName: 'Beautiful Day', artist: 'U2', album: 'No idea', id: 12345 },
     { songName: 'Fio de cabelo', artist: 'Chitãozinho e Chororó', album: 'No idea', id: 290487 },
