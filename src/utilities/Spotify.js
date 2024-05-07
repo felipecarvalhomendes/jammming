@@ -3,7 +3,7 @@ const redirect_uri = 'http://localhost:3000/';
 let accessToken;
 
 const Spotify = {
-    const getAccessToken = () => {
+    getAccessToken() {
         if (accessToken) { 
             return accessToken;
         }
@@ -25,7 +25,7 @@ const Spotify = {
 
     },
 
-    const search = (term) => {
+    search() {
         const accessToken = Spotify.getAccessToken();
 
         return fetch(`https://api.spotify.com/v1/search?q=${term}`, {
