@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Playlist.module.css'
 
-function Playlist({ tracks, removeTrackFromPlaylist, savePlaylist }) {
+function Playlist({ tracks, removeTrackFromPlaylist, updatePlaylist, savePlaylist }) {
     const [playlistTitle, setPlaylistTitle] = useState('');
 
     const handleChange = (event) => {

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styles from './SearchResults.module.css'
 
-function SearchResults({ tracks, onAdd }) {
+function SearchResults({ searchResults, onAdd }) {
     return (
       <div>
         <h2>Results</h2>
-        {tracks.map(track => (
+        {searchResults.map(track => (
           <div key={track.id}>
             <p>{track.songName}</p>
             <p>{track.artist}</p>
