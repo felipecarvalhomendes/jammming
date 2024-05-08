@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <h1>Jammming logo</h1>
-      <SearchBar search={search} />
+      <SearchBar onSearch={search} />
       <SearchResults searchResults={searchResults} onAdd={addTrack} />
       <Playlist
         playlistName={playlistName} 

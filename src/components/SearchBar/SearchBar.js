@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
+
 import styles from './SearchBar.module.css';
 
 function SearchBar(props) {
-    const [search, setSearch] = useState('');
+    const [term, setTerm] = useState('');
 
-    const handleChange = (event) => {
-        setSearch(event.target.value);
+    const handleTermChange = (event) => {
+        setTerm(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const search = (event) => {
         event.preventDefault();
-        props.search(search);
+        props.onSearch(term);
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type='text' 
-                    value={search}
-                    onChange={handleChange}  
-                />
-                <button type='submit'>Search</button>
-            </form>
+        <div className='SearchBar'>
+            <input 
+                type='text' 
+                placeholder='Search a song title'
+                value={term}
+                onChange={handleTermChange}  
+            />
+            <button onClick={search}>
+                Search
+            </button>
         </div>
     );
 }
