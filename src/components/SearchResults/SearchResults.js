@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import styles from './SearchResults.module.css'
+import TrackList from "../TrackList/TrackList";
 
-function SearchResults({ searchResults, onAdd }) {
+const SearchResults = (props) => {
     return (
-      <div>
+      <div className="SearchResults">
         <h2>Results</h2>
-        {searchResults.map(track => (
-          <div key={track.id}>
-            <p>{track.songName}</p>
-            <p>{track.artist}</p>
-            <p>{track.album}</p>
-            <button onClick={() => onAdd(track)}>Add to Playlist</button>
-          </div>
-        ))}
+        <TrackList tracks={props.searchResults} onAdd={props.onAdd} />
       </div>
     );
-  }  
-
-export default SearchResults;
+  };
+  
+  export default SearchResults;  
