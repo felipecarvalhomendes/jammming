@@ -44,7 +44,6 @@ function App() {
 
       <SearchBar onSearch={search} />
 
-      
       <SearchResults searchResults={searchResults} onAdd={addTrack} />
       
       <Playlist
@@ -54,7 +53,7 @@ function App() {
         onNameChange={updatePlaylistName}
         onSave={savePlaylist}
       />
-      
+
     </div>
   );
 }

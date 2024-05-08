@@ -18,6 +18,7 @@ function Playlist(props) {
 
         <Tracklist
             tracks={props.playlistTracks}
+            isRemoval={true}
             onRemove={props.onRemove}
         />
 
