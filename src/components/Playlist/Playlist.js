@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
 import styles from './Playlist.module.css'
+import Tracklist from '../Tracklist/Tracklist';
 
-function Playlist({ tracks, removeTrackFromPlaylist, updatePlaylist, savePlaylist }) {
-    const [playlistTitle, setPlaylistTitle] = useState('');
-
-    const handleChange = (event) => {
-        setPlaylistTitle(event.target.value);
+function Playlist(props) {
+    const handleNameChange = (event) => {
+        props.onNameChange(event.targe.value);
     }
 
     return (
-      <div>
-        <label htmlFor="playlistTitleInput">Playlist title: </label>
+      <div className='Playlist'>
+
         <input 
-            id="playlistTitleInput"
             type='text' 
-            value={playlistTitle}
-            onChange={handleChange}
+            value={props.playlistName}
+            onChange={handleNameChange}
         />
-        {tracks.map(track => (
-          <div key={track.id}>
-            <p>{track.songName}</p>
-            <p>{track.artist}</p>
-            <p>{track.album}</p>
-            <button onClick={() => removeTrackFromPlaylist(track)}>Remove from playlist</button>
-          </div>
-        ))}
-        <button onClick={() => savePlaylist}>Save to Spotify</button>
+
+        <Tracklist
+            tracks={props.playlistTracks}
+            onRemove={props.onRemove}
+        />
+
+        <button onClick={props.onSave}>Save to Spotify</button>
+      
       </div>
     );
   }

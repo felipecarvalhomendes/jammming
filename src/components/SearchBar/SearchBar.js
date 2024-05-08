@@ -15,15 +15,18 @@ function SearchBar(props) {
 
     return (
         <div className='SearchBar'>
+
             <input 
                 type='text' 
                 placeholder='Search a song title'
                 value={term}
                 onChange={handleTermChange}  
             />
+
             <button onClick={search}>
                 Search
             </button>
+            
         </div>
     );
 }

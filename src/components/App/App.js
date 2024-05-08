@@ -39,9 +39,14 @@ function App() {
 
   return (
     <div className="App">
+
       <h1>Jammming logo</h1>
+
       <SearchBar onSearch={search} />
+
+      
       <SearchResults searchResults={searchResults} onAdd={addTrack} />
+      
       <Playlist
         playlistName={playlistName} 
         playlistTracks={playlistTracks} 
@@ -49,6 +54,7 @@ function App() {
         onNameChange={updatePlaylistName}
         onSave={savePlaylist}
       />
+      
     </div>
   );
 }
