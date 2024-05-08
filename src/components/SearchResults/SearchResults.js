@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import styles from './SearchResults.module.css'
-import TrackList from "../TrackList/TrackList";
+import Tracklist from "../Tracklist/Tracklist";
 
 const SearchResults = (props) => {
     return (
       <div className="SearchResults">
 
         <h2>Results</h2>
-
         
-        <TrackList tracks={props.searchResults} onAdd={props.onAdd} />
+        <Tracklist tracks={props.searchResults} onAdd={props.onAdd} />
       
       </div>
     );

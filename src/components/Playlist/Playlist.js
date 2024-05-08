@@ -4,7 +4,7 @@ import Tracklist from '../Tracklist/Tracklist';
 
 function Playlist(props) {
     const handleNameChange = (event) => {
-        props.onNameChange(event.targe.value);
+        props.onNameChange(event.target.value);
     }
 
     return (
