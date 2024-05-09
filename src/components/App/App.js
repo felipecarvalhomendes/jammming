@@ -38,21 +38,23 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
 
       <h1>Jammming</h1>
 
       <SearchBar onSearch={search} />
 
-      <SearchResults searchResults={searchResults} onAdd={addTrack} />
-      
-      <Playlist
-        playlistName={playlistName} 
-        playlistTracks={playlistTracks} 
-        onRemove={removeTrack}
-        onNameChange={updatePlaylistName}
-        onSave={savePlaylist}
-      />
+      <div className='resultsAndPlaylist'>
+        <SearchResults searchResults={searchResults} onAdd={addTrack} />
+        
+        <Playlist
+          playlistName={playlistName} 
+          playlistTracks={playlistTracks} 
+          onRemove={removeTrack}
+          onNameChange={updatePlaylistName}
+          onSave={savePlaylist}
+        />
+      </div>
 
     </div>
   );

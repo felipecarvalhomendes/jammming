@@ -19,7 +19,6 @@ function SearchBar(props) {
             <label>Song search: </label>
             <input 
                 type='text' 
-                placeholder='Search a song title'
                 value={term}
                 onChange={handleTermChange}  
             />
