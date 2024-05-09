@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Playlist.module.css'
+import styles from './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
 function Playlist(props) {
@@ -8,8 +8,9 @@ function Playlist(props) {
     }
 
     return (
-      <div className='Playlist'>
+      <div className={styles.Playlist}>
 
+        <label>Playlist name:</label>
         <input 
             type='text' 
             value={props.playlistName}

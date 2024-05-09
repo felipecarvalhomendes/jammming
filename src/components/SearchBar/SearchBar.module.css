@@ -10,23 +10,22 @@ input {
   }
 
 button {
-    padding: 10px 20px; /* Increase padding to make the button bigger */
-    font-size: 16px; /* Larger font size */
-    border-radius: 10px; /* Rounded corners */
-    border: none; /* Remove default border */
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor on hover */
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border-radius: 10px; 
+    border: none; 
+    background-color: darkblue; 
+    color: white; 
+    cursor: pointer; 
 }
 
 button:hover {
     background-color: #45a049; 
 }
 
-
 .SearchBar {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 0.625rem;
     align-items: center;
 }

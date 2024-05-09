@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Track.module.css'
+import styles from './Track.module.css';
 
 function Track(props) {
     const addTrack = () => {
