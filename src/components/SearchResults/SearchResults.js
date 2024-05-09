@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './SearchResults.module.css'
 import Tracklist from "../Tracklist/Tracklist";
 

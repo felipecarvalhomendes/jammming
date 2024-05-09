@@ -14,8 +14,9 @@ function SearchBar(props) {
     }
 
     return (
-        <div className='SearchBar'>
+        <div className={styles.SearchBar}>
 
+            <label>Song search: </label>
             <input 
                 type='text' 
                 placeholder='Search a song title'
@@ -26,7 +27,7 @@ function SearchBar(props) {
             <button onClick={search}>
                 Search
             </button>
-            
+
         </div>
     );
 }
