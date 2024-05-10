@@ -8,7 +8,7 @@ import Spotify from '../../utilities/Spotify';
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
-  const [playlistName, setPlaylistName] = useState('New playlist name');
+  const [playlistName, setPlaylistName] = useState('');
 
   const search = (term) => {
     Spotify.search(term).then(setSearchResults);
@@ -31,8 +31,8 @@ function App() {
   const savePlaylist = () => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
-      alert('Playlist saved');
-      setPlaylistName('New playlist name');
+      alert('🎧 Playlist saved. Listen on your Spotify');
+      setPlaylistName('');
       setPlaylistTracks([]);
     });
   }
@@ -40,7 +40,9 @@ function App() {
   return (
     <div className='App'>
 
-      <h1>Jammming</h1>
+      <header>
+        <h1>🎸Playlist Creator</h1>
+      </header>
 
       <SearchBar onSearch={search} />
 

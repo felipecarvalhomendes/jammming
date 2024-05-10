@@ -8,24 +8,25 @@ function Playlist(props) {
     }
 
     return (
-      <div className={styles.Playlist}>
+        <div className={styles.Playlist}>
 
-        <label>Playlist name:</label>
-        <input 
-            type='text' 
-            value={props.playlistName}
-            onChange={handleNameChange}
-        />
+            <h2>Your custom playlist</h2>
+            <label>Playlist name:</label>
+            <input 
+                type='text' 
+                value={props.playlistName}
+                onChange={handleNameChange}
+            />
 
-        <Tracklist
-            tracks={props.playlistTracks}
-            isRemoval={true}
-            onRemove={props.onRemove}
-        />
+            <Tracklist
+                tracks={props.playlistTracks}
+                isRemoval={true}
+                onRemove={props.onRemove}
+            />
 
-        <button onClick={props.onSave}>Save to Spotify</button>
+            <button className={styles.saveButton} onClick={props.onSave}>Save to Spotify</button>
       
-      </div>
+        </div>
     );
   }
   

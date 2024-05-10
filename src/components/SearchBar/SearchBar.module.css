@@ -1,5 +1,5 @@
 label {
-    color: yellow;
+    color: white;
 }
 
 input {
@@ -7,20 +7,21 @@ input {
     padding: 0.5rem; 
     width: 18rem;
     border: 0.12rem solid #333; 
+    color: #3A1684;
   }
 
 button {
-    padding: 10px 20px; 
-    font-size: 16px; 
-    border-radius: 10px; 
+    padding: 0.625rem 1.25rem; 
+    font-size: 1rem; 
+    border-radius: 0.625rem; 
     border: none; 
-    background-color: darkblue; 
-    color: white; 
+    background-color: #white; 
+    color: #3A1684; 
     cursor: pointer; 
 }
 
 button:hover {
-    background-color: #45a049; 
+    background-color: #CCCCCC; 
 }
 
 .SearchBar {

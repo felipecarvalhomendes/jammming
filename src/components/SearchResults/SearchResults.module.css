@@ -1,13 +1,17 @@
 h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: white;  
 }
 
 .SearchResults {
     width: 50%;
     padding: 2rem;
-    background-color: darkorchid;
+    background-color: #3A1684;
     opacity: 0.75;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
     color: white;
 }

@@ -3,17 +3,18 @@ h3 {
 }
 
 h4 {
-    color: gainsboro;
+    color: #CCCCCC;
 }
 
 .track {
     min-height: 4rem;
     padding: 0.25rem;
-    border-bottom: 0.125rem solid gainsboro;
+    border-bottom: 0.125rem solid #CCCCCC;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    column-gap: 1.5rem;
 }
 
 .trackInfo {
