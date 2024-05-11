@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styles from './SearchBar.module.css';
 
 function SearchBar(props) {
     const [term, setTerm] = useState('');
 
-    const handleTermChange = (event) => {
+    const handleTermChange = useCallback((event) => {
         setTerm(event.target.value);
-    }
+    }, []);
 
-    const search = (event) => {
+    const search = useCallback((event) => {
         event.preventDefault();
         props.onSearch(term);
-    }
+    }, [props.onSearch, term]);
 
     return (
         <div className={styles.SearchBar}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -10,32 +10,38 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
 
-  const search = (term) => {
+  const search = useCallback(
+  (term) => {
     Spotify.search(term).then(setSearchResults);
-  }  
+  }, []);  
 
-  const addTrack = (track) => {
-    if (!playlistTracks.some(playlistTrack => playlistTrack.id === track.id)) {
+  const addTrack = useCallback(
+    (track) => {
+      if (playlistTracks.some((savedTrack) => savedTrack.id === track.id))
+        return;
+
       setPlaylistTracks((prevTracks) => [...prevTracks, track]);
-    }
-  };
+    },
+    [playlistTracks]
+  );
 
-  const removeTrack = (trackToRemove) => {
+  const removeTrack = useCallback(
+  (trackToRemove) => {
     setPlaylistTracks(prevTracks => prevTracks.filter(track => track.id !== trackToRemove.id));
-  } 
+  }, []); 
 
-  const updatePlaylistName = (name) => {
+  const updatePlaylistName = useCallback((name) => {
     setPlaylistName(name);
-  }
+  }, []);
   
-  const savePlaylist = () => {
+  const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
       alert('🎧 Playlist saved. Listen on your Spotify');
       setPlaylistName('');
-      setPlaylistTracks([]);
+      setPlaylistName('New Playlist');
     });
-  }
+  }, [playlistName, playlistTracks]);
 
   return (
     <div className='App'>
@@ -60,6 +66,6 @@ function App() {
 
     </div>
   );
-}
+};
 
 export default App;

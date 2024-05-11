@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './Track.module.css';
 
 function Track(props) {
-    const addTrack = () => {
+    const addTrack = useCallback(() => {
         props.onAdd(props.track);
-    }
+    }, [props.onAdd, props.track]);
 
-    const removeTrack = () => {
+    const removeTrack = useCallback(() => {
         props.onRemove(props.track);
-    }
+    }, [props.onRemove, props.track]);
 
     const renderAction = () => {
         if (props.isRemoval) {
