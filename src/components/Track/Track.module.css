@@ -20,6 +20,48 @@ h4 {
 .trackInfo {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    text-align: left; 
+    align-items: flex-start;
+    text-align: left;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.trackInfo h3, .trackInfo h4 {
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0; 
+}
+
+.playSampleButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.playSampleButton:hover {
+    background-color: transparent;
+}
+
+.playSampleIcon {
+    color: white;
+}
+
+.playSampleIcon:hover {
+    color: #CCCCCC;
+}
+
+.pauseSampleIcon {
+    color: white;
+}
+
+.pauseSampleIcon:hover {
+    color: #CCCCCC;
 }

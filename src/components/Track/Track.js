@@ -41,17 +41,20 @@ function Track(props) {
     return (
         <div className={styles.track}>
 
-            <div className={styles.trackInfo}>
-                <h3>{props.track.name}</h3>
-                <h4>{props.track.artist} | {props.track.album}</h4>
+                <div className={styles.trackInfo}>
+                    <h3>{props.track.name}</h3>
+                    <h4>{props.track.artist} | {props.track.album}</h4>
+                </div>
+            
+                <div className={styles.buttons}>
                 {props.track.preview_url && (
-                    <button onClick={toggleSample}>
-                        {isPlaying ? 'Pause' : 'Play'}
-                    </button>
-                )}
-            </div>
-            {renderAction()}
-
+                        <button className={styles.playSampleButton} onClick={toggleSample}>
+                            {isPlaying ? <i className={`fa-solid fa-circle-pause fa-2xl ${styles.pauseSampleIcon}`}></i> : <i className={`fa-solid fa-circle-play fa-2xl ${styles.playSampleIcon}`}></i>}
+                        </button>
+                    )}
+                {renderAction()}
+                </div>
+                
         </div>
     );
 }
