@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './Track.module.css';
 
 function Track(props) {
@@ -12,6 +12,14 @@ function Track(props) {
     const removeTrack = useCallback(() => {
         props.onRemove(props.track);
     }, [props.onRemove, props.track]);
+
+    useEffect(() => {
+        const handleAudioEnd = () => setIsPlaying(false);
+
+        audio.addEventListener('ended', handleAudioEnd);
+
+        return () => audio.removeEventListener('ended', handleAudioEnd);
+    }, []);
 
     const toggleSample = useCallback(() => {
         if (isPlaying) {
@@ -54,7 +62,7 @@ function Track(props) {
                     )}
                 {renderAction()}
                 </div>
-                
+
         </div>
     );
 }
