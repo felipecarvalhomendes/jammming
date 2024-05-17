@@ -9,7 +9,8 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
-  const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState(null); 
+  const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState(null); // Store the currently playing audio element
+  const [currentlyPlayingTrackId, setCurrentlyPlayingTrackId] = useState(null); // Store the ID of the currently playing track
 
   const search = useCallback((term) => {
     Spotify.search(term).then(setSearchResults);
@@ -53,8 +54,10 @@ function App() {
         <SearchResults
           searchResults={searchResults}
           onAdd={addTrack}
-          currentlyPlayingAudio={currentlyPlayingAudio} 
-          setCurrentlyPlayingAudio={setCurrentlyPlayingAudio} 
+          currentlyPlayingAudio={currentlyPlayingAudio} // Pass the audio element
+          setCurrentlyPlayingAudio={setCurrentlyPlayingAudio} // Pass the setter function
+          currentlyPlayingTrackId={currentlyPlayingTrackId} // Pass the track ID
+          setCurrentlyPlayingTrackId={setCurrentlyPlayingTrackId} // Pass the setter function
         />
         <Playlist
           playlistName={playlistName}

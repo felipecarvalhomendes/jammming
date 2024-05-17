@@ -10,8 +10,10 @@ const SearchResults = (props) => {
       <Tracklist
         tracks={props.searchResults}
         onAdd={props.onAdd}
-        currentlyPlayingAudio={props.currentlyPlayingAudio}
-        setCurrentlyPlayingAudio={props.setCurrentlyPlayingAudio} 
+        currentlyPlayingAudio={props.currentlyPlayingAudio} // Pass the audio element
+        setCurrentlyPlayingAudio={props.setCurrentlyPlayingAudio} // Pass the setter function
+        currentlyPlayingTrackId={props.currentlyPlayingTrackId} // Pass the track ID
+        setCurrentlyPlayingTrackId={props.setCurrentlyPlayingTrackId} // Pass the setter function
       />
     </div>
   );

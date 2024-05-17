@@ -13,8 +13,10 @@ function Tracklist(props) {
             onAdd={props.onAdd}
             isRemoval={props.isRemoval}
             onRemove={props.onRemove}
-            currentlyPlayingAudio={props.currentlyPlayingAudio} 
-            setCurrentlyPlayingAudio={props.setCurrentlyPlayingAudio}
+            currentlyPlayingAudio={props.currentlyPlayingAudio} // Pass the audio element
+            setCurrentlyPlayingAudio={props.setCurrentlyPlayingAudio} // Pass the setter function
+            currentlyPlayingTrackId={props.currentlyPlayingTrackId} // Pass the track ID
+            setCurrentlyPlayingTrackId={props.setCurrentlyPlayingTrackId} // Pass the setter function
           />
         );
       })}

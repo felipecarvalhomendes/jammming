@@ -3,37 +3,48 @@ import styles from './Track.module.css';
 
 function Track(props) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState(new Audio(props.track.preview_url));
+  const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    const handleAudioEnd = () => setIsPlaying(false);
-    audio.addEventListener('ended', handleAudioEnd);
+    // Only create an audio element if the preview_url is valid
+    if (props.track.preview_url) {
+      const newAudio = new Audio(props.track.preview_url);
+      setAudio(newAudio);
 
-    return () => {
-      audio.removeEventListener('ended', handleAudioEnd);
-      audio.pause();
-    };
-  }, [audio]);
+      const handleAudioEnd = () => setIsPlaying(false);
+      newAudio.addEventListener('ended', handleAudioEnd);
 
-  useEffect(() => {
-    if (!isPlaying) {
-      audio.pause();
+      return () => {
+        newAudio.removeEventListener('ended', handleAudioEnd);
+        newAudio.pause();
+      };
     }
-  }, [isPlaying, audio]);
+  }, [props.track.preview_url]);
+
+  useEffect(() => {
+    if (props.currentlyPlayingTrackId !== props.track.id) {
+      setIsPlaying(false);
+    }
+  }, [props.currentlyPlayingTrackId, props.track.id]);
 
   const toggleSample = useCallback(() => {
+    if (!audio) return; // Return early if audio is not available
+
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
       if (props.currentlyPlayingAudio === audio) {
         props.setCurrentlyPlayingAudio(null);
+        props.setCurrentlyPlayingTrackId(null);
       }
     } else {
       if (props.currentlyPlayingAudio && props.currentlyPlayingAudio !== audio) {
         props.currentlyPlayingAudio.pause();
       }
+
       audio.play();
       props.setCurrentlyPlayingAudio(audio);
+      props.setCurrentlyPlayingTrackId(props.track.id);
       setIsPlaying(true);
     }
   }, [isPlaying, audio, props]);
