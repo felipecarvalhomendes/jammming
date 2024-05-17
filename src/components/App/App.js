@@ -9,31 +9,31 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
+  const [currentlyPlayingAudio, setCurrentlyPlayingAudio] = useState(null); 
 
-  const search = useCallback(
-  (term) => {
+  const search = useCallback((term) => {
     Spotify.search(term).then(setSearchResults);
-  }, []);  
+  }, []);
 
   const addTrack = useCallback(
     (track) => {
-      if (playlistTracks.some((savedTrack) => savedTrack.id === track.id))
-        return;
-
+      if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) return;
       setPlaylistTracks((prevTracks) => [...prevTracks, track]);
     },
     [playlistTracks]
   );
 
   const removeTrack = useCallback(
-  (trackToRemove) => {
-    setPlaylistTracks(prevTracks => prevTracks.filter(track => track.id !== trackToRemove.id));
-  }, []); 
+    (trackToRemove) => {
+      setPlaylistTracks((prevTracks) => prevTracks.filter((track) => track.id !== trackToRemove.id));
+    },
+    []
+  );
 
   const updatePlaylistName = useCallback((name) => {
     setPlaylistName(name);
   }, []);
-  
+
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
@@ -45,27 +45,27 @@ function App() {
 
   return (
     <div className='App'>
-
       <header>
         <h1>🎸Playlist Creator</h1>
       </header>
-
       <SearchBar onSearch={search} />
-
       <div className='resultsAndPlaylist'>
-        <SearchResults searchResults={searchResults} onAdd={addTrack} />
-        
+        <SearchResults
+          searchResults={searchResults}
+          onAdd={addTrack}
+          currentlyPlayingAudio={currentlyPlayingAudio} 
+          setCurrentlyPlayingAudio={setCurrentlyPlayingAudio} 
+        />
         <Playlist
-          playlistName={playlistName} 
-          playlistTracks={playlistTracks} 
+          playlistName={playlistName}
+          playlistTracks={playlistTracks}
           onRemove={removeTrack}
           onNameChange={updatePlaylistName}
           onSave={savePlaylist}
         />
       </div>
-
     </div>
   );
-};
+}
 
 export default App;
